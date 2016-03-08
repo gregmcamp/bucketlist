@@ -7,7 +7,9 @@
     <h3><%= link_to bucket.name, bucket_path(bucket) %></h3>
     </li>
     <%= link_to 'Delete Bucket List', bucket_path(bucket), method: :delete %>
+    <%= link_to 'Change Bucket List Name', edit_bucket_path(bucket) %>
   </ul>
+
 
     <% end %>
   <% else %>

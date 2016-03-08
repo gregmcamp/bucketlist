@@ -21,9 +21,16 @@ class BucketsController < ApplicationController
   end
 
   def edit
+    @bucket = current_user.buckets.find(params[:id])
   end
 
   def update
+    @bucket = current_user.buckets.find(params[:id])
+    if @bucket.update(bucket_params)
+      redirect_to '/'
+    else
+      render :edit
+    end
   end
 
   def destroy

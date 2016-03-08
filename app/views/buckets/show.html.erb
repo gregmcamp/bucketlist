@@ -1,2 +1,17 @@
-<h1>Buckets#show</h1>
-<p>Find me in app/views/buckets/show.html.erb</p>
+<h1><%= @bucket.name %></h1>
+ <%= link_to 'Add Item', new_bucket_item_path(@bucket) %> 
+
+
+<% if @bucket.items.any? %>
+  <% @bucket.items.each do |item| %>
+  <ul>
+    <li>
+      <h3><%= item.name %></h3>
+    </li>
+      <h5>Description: <br/> <%= item.description %></h5>
+  </ul>
+ <% end %> 
+
+<% else %>
+  <h3> No Items Listed </h3>
+<% end %>

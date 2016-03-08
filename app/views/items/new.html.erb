@@ -1,2 +1,13 @@
-<h1>Items#new</h1>
-<p>Find me in app/views/items/new.html.erb</p>
+<h1>Items</h1>
+
+<%= form_for [@bucket, @item] do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br/>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+  <br/>
+  <%= f.submit %>
+
+  <% end %>
