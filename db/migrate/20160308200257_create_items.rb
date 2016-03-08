@@ -3,7 +3,7 @@ class CreateItems < ActiveRecord::Migration
     create_table :items do |t|
       t.string :name
       t.text :description
-      t.belongs_to :buckets
+      t.belongs_to :bucket
 
       t.timestamps null: false
     end

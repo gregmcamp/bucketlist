@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
-  devise_for :users
+  get 'items/index'
 
-  root 'users#show'
+  get 'items/show'
+
+  get 'items/new'
+
+  get 'items/edit'
+
+  devise_for :users, controllers:{registrations:'users/registrations'}
+
+  root 'home#index'
 
   resources :buckets do
     resources :items

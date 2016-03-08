@@ -1,2 +1,7 @@
-<h1>Buckets#new</h1>
-<p>Find me in app/views/buckets/new.html.erb</p>
+<h1>Add Bucket List for <%= current_user.first_name %></h1>
+<%= form_for @bucket do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br/>
+  <%= f.submit %>
+<% end %>

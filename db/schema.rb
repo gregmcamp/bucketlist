@@ -18,8 +18,7 @@ ActiveRecord::Schema.define(version: 20160308200257) do
 
   create_table "buckets", force: :cascade do |t|
     t.string   "name"
-    t.string   "item"
-    t.integer  "users_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -27,7 +26,7 @@ ActiveRecord::Schema.define(version: 20160308200257) do
   create_table "items", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "buckets_id"
+    t.integer  "bucket_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
