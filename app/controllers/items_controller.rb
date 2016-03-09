@@ -22,6 +22,22 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item = @bucket.items.find(params[:id])
+  end
+
+  def update
+    @item = @bucket.items.find(params[:id])
+    if @item.update(item_params)
+      redirect_to bucket_path(@bucket)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @item = @bucket.items.find(params[:id])
+    @item.destroy
+    redirect_to bucket_path(@bucket)
   end
 
   private
