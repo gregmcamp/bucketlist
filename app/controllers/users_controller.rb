@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   def index
     @users = User.all
-    @buckets = current_user.buckets
   end
 
   def show

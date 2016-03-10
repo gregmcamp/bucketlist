@@ -3,7 +3,7 @@
 <% if @buckets.any? %>
   <% @buckets.each do |bucket| %>
   <ul>
-    <li>
+    <li class="collapsible" data-collapsible="expandable">
     <h3><%= link_to bucket.name, bucket_path(bucket) %></h3>
     </li>
     <%= link_to 'Delete Bucket List', bucket_path(bucket), method: :delete %>

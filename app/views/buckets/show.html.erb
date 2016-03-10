@@ -1,5 +1,5 @@
-<h1><%= @bucket.name %></h1>
- <%= link_to 'Add Item', new_bucket_item_path(@bucket) %> 
+<h1 class=""><%= @bucket.name %></h1>
+ <%= link_to 'Add Item', new_bucket_item_path(@bucket) %>
  <%= link_to 'Home', '/' %>
 
 <% if @bucket.items.any? %>
@@ -12,7 +12,7 @@
       <%= link_to 'Edit Item', edit_bucket_item_path(@bucket.id, item.id) %>
       <%= link_to 'Delete Item', bucket_item_path(@bucket.id, item.id), method: :delete %>
   </ul>
- <% end %> 
+ <% end %>
 
 <% else %>
   <h3> No Items Listed </h3>
