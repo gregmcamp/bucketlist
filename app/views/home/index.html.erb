@@ -1,19 +1,50 @@
-<h1>Welcome <%= current_user.first_name %></h1>
+<h1>Welcome <%= current_user.first_name %></h1><br/>
+<%= button_to 'Log Out', destroy_user_session_path, method: :delete %>
+<%= button_to 'New Bucket List', new_bucket_path, method: :get %>
 <hr/>
 <% if @buckets.any? %>
   <% @buckets.each do |bucket| %>
-  <ul>
-    <li class="collapsible" data-collapsible="expandable">
-    <h3><%= link_to bucket.name, bucket_path(bucket) %></h3>
-    </li>
-    <%= link_to 'Delete Bucket List', bucket_path(bucket), method: :delete %>
-    <%= link_to 'Change Bucket List Name', edit_bucket_path(bucket) %>
-  </ul>
+  <div class="row">
+    <div class="card med col s12 m12 l4" style='width: 25%' >
+      <div class="card-image waves-effect waves-block waves-light">
+        <img class="activator" src="<%= image_path("mountain.jpg") %>" />
+      </div>
 
+      <div class="card-content grey lighten-2" >
+        <span class="card-title activator teal-text text-lighten-2"> <%= bucket.name %> </span>
 
+          <%= link_to 'Delete   ', bucket_path(bucket), method: :delete %>
+          <%= link_to 'Edit', edit_bucket_path(bucket) %>
+
+      </div>
+
+      <div class="card-reveal grey lighten-2">
+        <span class="card-title activator teal-text text-lighten-2">
+          <%= bucket.name %>
+          <i class="material-icons right">close</i>
+        </span>
+        <% bucket.items.each do |item| %>
+          <ul class="collapsible" data-collapsible="accordian">
+            <li>
+              <div class='collapsible-header teal lighten-2'>
+                <%= item.name %>
+              </div>
+              <div class='collapsible-body grey lighten-1'>
+                <%= item.description %>
+                  </br>
+                <%= link_to 'Delete', bucket_item_path(bucket, item), method: :delete %>
+                <%= link_to "Edit", edit_bucket_item_path(bucket, item) %>
+              </div>
+            </li>
+          </ul>
+        <% end %>
+        <%= link_to 'Add Item', new_bucket_item_path(bucket) %>
+      </div>
+
+    </div>
     <% end %>
-  <% else %>
-    <h3>You have no Bucketlists</h3>
+  </div>
+
+<% else %>
+  <h3>You have no Bucketlists</h3>
 <% end %>
-<%= button_to 'Log Out', destroy_user_session_path, method: :delete %>
-<%= button_to 'New Bucket List', new_bucket_path, method: :get %>

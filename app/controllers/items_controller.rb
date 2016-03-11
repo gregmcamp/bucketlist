@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
   def create
     @item = @bucket.items.new(item_params)
     if @item.save
-      redirect_to bucket_path(@bucket)
+      redirect_to "/"
     else
       render :new
     end
@@ -28,7 +28,7 @@ class ItemsController < ApplicationController
   def update
     @item = @bucket.items.find(params[:id])
     if @item.update(item_params)
-      redirect_to bucket_path(@bucket)
+      redirect_to "/"
     else
       render :edit
     end
@@ -37,7 +37,7 @@ class ItemsController < ApplicationController
   def destroy
     @item = @bucket.items.find(params[:id])
     @item.destroy
-    redirect_to bucket_path(@bucket)
+    redirect_to "/"
   end
 
   private
